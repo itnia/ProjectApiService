@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "954fc50f-35d4-4d0f-8aae-12657ba805ae",
+		"name": "Simple Api Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "943090"
+	},
+	"item": [
+		{
+			"name": "Расчет стоимости доставки",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:9090/api/delivery/cost-calculation?delivery_address=some address",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"delivery",
+						"cost-calculation"
+					],
+					"query": [
+						{
+							"key": "delivery_address",
+							"value": "some address"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список заказов",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:9090/api/orders?client_id=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"orders"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "1",
+							"description": "Опциональный"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Детали заказа",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:9090/api/orders/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"orders",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создать заказ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:9090/api/orders?delivery_address_id=1&products=[id  продуктов заказа]",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"orders"
+					],
+					"query": [
+						{
+							"key": "delivery_address_id",
+							"value": "1"
+						},
+						{
+							"key": "products",
+							"value": "[id  продуктов заказа]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Привзать курьера к заказу",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:9090/api/orders/1/courier?courier_id=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"orders",
+						"1",
+						"courier"
+					],
+					"query": [
+						{
+							"key": "courier_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,41 @@
+version: '3.2'
+services:
+  web:
+    image: nginx:stable-alpine
+    restart: always
+    links:
+      - php
+    ports:
+      - "9090:80"
+    depends_on:
+      - php
+    volumes:
+      - ./docker/config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./:/var/www/html:rw
+    networks:
+      - internal
+  php:
+    build:
+      context: .
+      dockerfile: docker/dockerfiles/dockerfile_php
+    restart: always
+    volumes:
+      - ./:/var/www/html:rw
+    networks:
+      - internal
+  db:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "laravel"
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "password"
+      PGDATA: /data/postgres
+    volumes:
+      - ./docker/data/postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    
+    networks:
+      - internal
+networks:
+  internal:
